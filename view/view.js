@@ -144,16 +144,13 @@ steal.plugins("jquery").then(function($){
 	 * @return {String} The result of the view.
 	 */
 	$.View= function(url, data, helpers){
-		//check path for suffix
+		var id = toId(url)
 
 		//change this url?
-		if (url.match(/^\/\//)) {
-			var id = toId(url.substr(2))
+		if (url.match(/^\/\//))
 			url = steal.root.join( url.substr(2) ) //can steal be removed?
-		}else{
-			var id = toId(url)
-		}
-		
+
+		//check path for suffix
 		var suffix = url.match(/\.[\w\d]+$/),
 			type, 
 			el
